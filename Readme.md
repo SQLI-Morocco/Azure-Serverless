@@ -18,8 +18,8 @@ In this demo I’m using :
 
 ![image](https://github.com/SQLI-Morocco/Azure-Serverless/blob/master/img/weatheralert.JPG)
 
-*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component* <br>
-        *In this article I’m using Azure Cli command over linux bash shell to provision Azure components* <br>
+*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
+        *In this article I’m using Azure Cli command over linux bash shell to provision Azure components*
         *I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)*
 
 **IoT Hub**
@@ -92,3 +92,32 @@ echo "Table Created"
 echo "End of Creating storage account"
 ```
 <br>
+
+<br>
+
+``` bash
+az eventhubs namespace create --name $event_Hubs_namespace \
+                              --resource-group $resource_group_name \
+                              --location $location \
+                              --enable-auto-inflate true \
+                              --maximum-throughput-units 20 \
+                              --sku Standard
+#create write and right access policies
+az eventhubs namespace authorization-rule create  \
+                    --resource-group  $resource_group_name \
+                    --namespace-name $event_Hubs_namespace \
+                    --name $sendauthorule \
+                    --rights Send
+
+az eventhubs namespace authorization-rule create \
+                            --resource-group  $resource_group_name \
+                            --namespace-name $event_Hubs_namespace \
+                            --name $readauthorule \
+                            --rights Listen
+
+
+## Create an event hub. Specify a name for the event hub. 
+az eventhubs eventhub create --name $event_hub_name \
+                 --resource-group $resource_group_name \
+                  --namespace-name $event_Hubs_namespace
+```
