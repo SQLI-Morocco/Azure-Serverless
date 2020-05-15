@@ -25,7 +25,7 @@ az iot hub policy create --hub-name $iot_hub_name \
                          --name $iot_hub_manage_policy --permissions RegistryWrite ServiceConnect DeviceConnect \
                          --resource-group $resource_group_name -o json
 
-echo "Connection string to be used to connect your device to the IOT hub :"
+echo "Connection string to be used to connect your device to the IoT hub :"
 
 az iot hub device-identity show-connection-string \
                                                             --device-id $iot_device_name  \

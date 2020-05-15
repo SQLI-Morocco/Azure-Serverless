@@ -22,9 +22,8 @@ In this demo I’m using :
         *In this article I’m using Azure Cli command over linux bash shell to provision Azure components*
         *I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)*
 
-<br>
-###### **IoT Hub**
-<br>
+**IoT Hub**
+
 IoT Hub offers two way communication, from devices to Azure (D2C) and from Azure to devices (C2D), itcan process millions of event per second and support multiple protocols such as MQTT, AMQP, MQTT over socket ,AMQP over socket   HTTPS, and file upload.
 IoT Hub secure connection between the cloud and devices by using device identity and shared access policies.
 
@@ -77,17 +76,19 @@ for this demo , we create a storage account with a table storage , this table is
 with th script bellow create a storage account and a table in the created storage account.
 
 <br>
-``` bash
-echo "Creating storage account"
-az storage account create \
-                --name $weather_storage_account_name \
-                 --resource-group $resource_group_name \
-                 --access-tier Hot --sku Standard_LRS \
-                 --location $location
 
-echo "Creating Table in the created storage account"
-az storage table create --name $weather_data \
-                        --account-name $weather_storage_account_name 
-echo "Table Created"
-echo "End of Creating storage account script"
+``` bash
+echo "Creating storage account"
+az storage account create \
+                --name $weather_storage_account_name \
+                 --resource-group $resource_group_name \
+                 --access-tier Hot --sku Standard_LRS \
+                 --location $location
+
+echo "Creating Table in the created storage account"
+az storage table create --name $weather_data \
+                        --account-name $weather_storage_account_name 
+echo "Table Created"
+echo "End of Creating storage account"
 ```
+<br>
