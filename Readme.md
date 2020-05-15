@@ -7,14 +7,14 @@ In this example  I'm going to build weather alert system ,using a bunch of Azur
 
 In this demo I’m using :
 
-*  IoT Hub : To connect IoT device to Azure cloud environment
-*  Azure Stream Analytics : To mange data in motion form the IoT hub
-*  Storage Account
-*  Table : To store all data coming from the IoT device ‘cool storag’
-*  Queue : to queue message alert before sending  alerts
-*  Event Hub : To connect different component in azure within azure environment
-*  Azure Function : serverless function will be in charge of getting data form from the event hub and storing it in the Queue
-*  LogicAPP : Get the alert from the queue and send emails alert
+* IoT Hub : To connect IoT device to Azure cloud environment
+* Azure Stream Analytics : To mange data in motion form the IoT hub
+* Storage Account
+* Table : To store all data coming from the IoT device ‘cool storag’
+* Queue : to queue message alert before sending  alerts
+* Event Hub : To connect different component in azure within azure environment
+* Azure Function : serverless function will be in charge of getting data form from the event hub and storing it in the Queue
+* LogicAPP : Get the alert from the queue and send emails alert
 
 ![image](https://github.com/SQLI-Morocco/Azure-Serverless/blob/master/img/weatheralert.JPG)
 *NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
@@ -29,7 +29,7 @@ IoT Hub secure connection between the cloud and devices by using device identit
 
 <br>
 <br>
-```
+``` apache
 ##Create IOT hub and add device to the IOT HUB
 echo "Create IOT Hub"
 az iot hub create --name $iot_hub_name \
