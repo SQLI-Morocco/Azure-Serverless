@@ -27,11 +27,10 @@ In this demo I’m using :
 IoT Hub offers two way communication, from devices to Azure (D2C) and from Azure to devices (C2D), itcan process millions of event per second and support multiple protocols such as MQTT, AMQP, MQTT over socket ,AMQP over socket   HTTPS, and file upload.
 IoT Hub secure connection between the cloud and devices by using device identity and shared access policies
 
-<br>
-``` angelscript
-az iot hub create --name $iot_hub_name \
-                     --resource- group $resource_group_name  \
-                     --location $location --sku $sku
+``` bash
+az iot hub create --name $iot_hub_name \
+                     --resource-group $resource_group_name  \
+                     --location $location --sku $sku
 ```
 <br>
 <br>
