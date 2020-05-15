@@ -18,8 +18,8 @@ In this demo I’m using :
 
 ![image](https://github.com/SQLI-Morocco/Azure-Serverless/blob/master/img/weatheralert.JPG)
 
-*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
-        *In this article I’m using Azure Cli command over linux bash shell to provision Azure components*
+*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component* <br>
+        *In this article I’m using Azure Cli command over linux bash shell to provision Azure components* <br>
         *I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)*
 
 **IoT Hub**
