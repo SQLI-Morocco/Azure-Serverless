@@ -1,0 +1,7 @@
+logicAppName="weateralertlogicapp"
+weather_storage_account_name="iotweathersrore01"
+email_to="ylasmak@gmail.com"
+deploymentName="LogicAPPDeployment"
+resource_group_name="iot-weather-alert"
+logicapp_template_file="../../../weatheralertlogicapp/weatheralertlogicapp/LogicAPP.json"
+send_grid_api_key="SG.Zi4q7PobSQ-PCDUnU5S7iQ.MKq_GiwU17mzP_jTvJwQDl7BQUG8arQRqjqbM_i8xl"

@@ -1,0 +1,16 @@
+{
+    "Name": "TableStorage",
+    "DataSourceType": "Table Storage",
+    "TableStorageProperties": {
+        "AccountName": "iotweathersrore01",
+        "AccountKey": null,
+        "Table": "weatherdata",
+        "PartitionKey": "deviceId",
+        "RowKey": "enqueuedTimeUtc",
+        "BatchSize": 100,
+        "ColumnsToRemove": null
+    },
+    "DataSourceCredentialDomain": "df040350-2174-498e-b8f0-2b8ba507d935.StreamAnalystics",
+    "Serialization": null,
+    "ScriptType": "Output"
+}

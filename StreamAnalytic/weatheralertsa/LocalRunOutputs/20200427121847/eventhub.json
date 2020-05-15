@@ -1,0 +1,4 @@
+{"messageId":1,"deviceId":"Raspberry Pi Web Client","temperature":29.888334199555082,"humidity":78.23548491871507,"enqueuedTimeUtc":"2020-04-25T17:11:14.510Z","partitionId":"1"}
+{"messageId":7,"deviceId":"Raspberry Pi Web Client","temperature":30.128731656050057,"humidity":62.38130180283437,"enqueuedTimeUtc":"2020-04-25T17:11:26.279Z","partitionId":"1"}
+{"messageId":8,"deviceId":"Raspberry Pi Web Client","temperature":30.125373366809022,"humidity":63.13173106852292,"enqueuedTimeUtc":"2020-04-25T17:11:28.311Z","partitionId":"1"}
+{"messageId":10,"deviceId":"Raspberry Pi Web Client","temperature":30.318613782966413,"humidity":72.03927717569823,"enqueuedTimeUtc":"2020-04-25T17:11:32.280Z","partitionId":"1"}

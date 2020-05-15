@@ -1,0 +1,20 @@
+{
+    "Name": "EventHub",
+    "DataSourceType": "Event Hub",
+    "EventHubProperties": {
+        "ServiceBusNamespace": "ns-weather-alert-event-eh",
+        "EventHubName": "weather-alert-event-eh",
+        "SharedAccessPolicyName": "readauthorule",
+        "SharedAccessPolicyKey": null,
+        "PartitionKey": "",
+        "PropertyColumns": []
+    },
+    "DataSourceCredentialDomain": "eb87e4ce-339e-40b6-9b48-d0307b3ff003.StreamAnalystics",
+    "Serialization": {
+        "Type": "Json",
+        "Encoding": "UTF8",
+        "FieldDelimiter": null,
+        "Format": "LineSeparated"
+    },
+    "ScriptType": "Output"
+}

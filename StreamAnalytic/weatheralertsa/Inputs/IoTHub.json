@@ -1,0 +1,21 @@
+{
+    "Name": "IoTHub",
+    "Type": "Data Stream",
+    "DataSourceType": "IoT Hub",
+    "IoTHubProperties": {
+        "IotHubNamespace": "weather-alert-iot-hub",
+        "EndPoint": "messages/events",
+        "SharedAccessPolicyName": "iothubowner",
+        "SharedAccessPolicyKey": null,
+        "ConsumerGroupName": "$Default"
+    },
+    "DataSourceCredentialDomain": "c338ab22-0b90-44ae-a56a-8613b579c92e.StreamAnalystics",
+    "Serialization": {
+        "Type": "Json",
+        "Encoding": "UTF8",
+        "FieldDelimiter": null
+    },
+    "PartitionKey": null,
+    "CompressionType": "None",
+    "ScriptType": "Input"
+}

@@ -1,0 +1,87 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "ASAApiVersion": {
+            "value": "2017-04-01-preview"
+        },
+        "StreamAnalyticsJobName": {
+            "value": "weatheralertsa"
+        },
+        "Location": {
+            "value": "Central US"
+        },
+        "OutputStartMode": {
+            "value": "JobStartTime"
+        },
+        "OutputStartTime": {
+            "value": "2019-01-01T00:00:00Z"
+        },
+        "DataLocale": {
+            "value": "en-US"
+        },
+        "OutputErrorPolicy": {
+            "value": "Stop"
+        },
+        "EventsLateArrivalMaxDelayInSeconds": {
+            "value": 5
+        },
+        "EventsOutOfOrderMaxDelayInSeconds": {
+            "value": 0
+        },
+        "EventsOutOfOrderPolicy": {
+            "value": "Adjust"
+        },
+        "StreamingUnits": {
+            "value": 3
+        },
+        "CompatibilityLevel": {
+            "value": "1.2"
+        },
+        "Input_IoTHub_iotHubNamespace": {
+            "value": "weather-alert-iot-hub"
+        },
+        "Input_IoTHub_consumerGroupName": {
+            "value": "$Default"
+        },
+        "Input_IoTHub_endpoint": {
+            "value": "messages/events"
+        },
+        "Input_IoTHub_sharedAccessPolicyName": {
+            "value": "iothubowner"
+        },
+        "Input_IoTHub_sharedAccessPolicyKey": {
+            "value": null
+        },
+        "Output_TableStorage_accountName": {
+            "value": "iotweathersrore01"
+        },
+        "Output_TableStorage_accountKey": {
+            "value": null
+        },
+        "Output_TableStorage_table": {
+            "value": "weatherdata"
+        },
+        "Output_TableStorage_partitionKey": {
+            "value": "deviceId"
+        },
+        "Output_TableStorage_rowKey": {
+            "value": "enqueuedTimeUtc"
+        },
+        "Output_TableStorage_batchSize": {
+            "value": 100
+        },
+        "Output_EventHub_serviceBusNamespace": {
+            "value": "ns-weather-alert-event-eh"
+        },
+        "Output_EventHub_eventHubName": {
+            "value": "weather-alert-event-eh"
+        },
+        "Output_EventHub_sharedAccessPolicyName": {
+            "value": "readauthorule"
+        },
+        "Output_EventHub_sharedAccessPolicyKey": {
+            "value": null
+        }
+    }
+}

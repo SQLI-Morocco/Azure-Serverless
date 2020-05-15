@@ -1,0 +1,3 @@
+
+SELECT * INTO TableStorage FROM IoTHub
+SELECT * INTO EventHub FROM IoTHub WHERE temperature > 29

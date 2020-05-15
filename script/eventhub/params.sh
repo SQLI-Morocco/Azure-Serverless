@@ -1,0 +1,6 @@
+event_Hubs_namespace="ns-weather-alert-event-eh"
+event_hub_name="weather-alert-event-eh"
+sendauthorule="sendauthorule"
+readauthorule="readauthorule"
+location="eastus"
+resource_group_name="iot-weather-alert"

@@ -1,0 +1,26 @@
+{
+    "name": "weatheralertsa",
+    "startFile": "weatheralertsa.asaql",
+    "configurations": [
+        {
+            "filePath": "JobConfig.json",
+            "subType": "JobConfig"
+        },
+        {
+            "filePath": "Inputs/IoTHub.json",
+            "subType": "Input"
+        },
+        {
+            "filePath": "Outputs/TableStorage.json",
+            "subType": "Output"
+        },
+        {
+            "filePath": "Outputs/EventHub.json",
+            "subType": "Output"
+        },
+        {
+            "filePath": "Inputs/Local_IoTHub.json",
+            "subType": "InputMock"
+        }
+    ]
+}
