@@ -17,13 +17,14 @@ In this demo I’m using :
 * LogicAPP : Get the alert from the queue and send emails alert
 
 ![image](https://github.com/SQLI-Morocco/Azure-Serverless/blob/master/img/weatheralert.JPG)
+
 *NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
-        In this article I’m using Azure Cli command over linux bash shell to provision Azure components
+        In this article I’m using Azure Cli command over linux bash shell to provision Azure components
          I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)
 
 <br>
+###### **IoT Hub**
 <br>
-**IoT Hub**
 IoT Hub offers two way communication, from devices to Azure (D2C) and from Azure to devices (C2D), itcan process millions of event per second and support multiple protocols such as MQTT, AMQP, MQTT over socket ,AMQP over socket   HTTPS, and file upload.
 IoT Hub secure connection between the cloud and devices by using device identity and shared access policies.
 
@@ -49,7 +50,7 @@ az iot hub device-identity create --device-id $iot_device_name \
                     --resource-group $resource_group_name
 
 ##Get device connection string 
-echo "Add IOT Hub Manage policy"
+echo "Add IoT Hub Manage policy"
 az iot hub policy create --hub-name $iot_hub_name \
                          --name $iot_hub_manage_policy \
                          --permissions RegistryWrite ServiceConnect DeviceConnect \
@@ -64,4 +65,28 @@ az iot hub device-identity show-connection-string \
                          --query connectionString
 ```
 <br>
+Once the IoT Hub and the IoT hub device is created , get the connection string from the last query to configure the device.
+for this demo we are using Azure simulator , please change the connection string in the node JS code with your connection string , and click start.
+
+The simulator start sending telemetry to the cloud ,if you check in your IoT hub metric bled you will see telemetry coming to the cloud from your device
+
+**Storage Account**
+Azure offers variaty type of storage  account that can be used to store all sort of data in Azure  (Blob storage, Table , Queue , File,disk)
+for this demo , we create a storage account with a table storage , this table is going to be used as cool storage to store all the data coming from the device
+with th script bellow create a storage account and a table in the created storage account.
+
 <br>
+``` bash
+echo "Creating storage account"
+az storage account create \
+                --name $weather_storage_account_name \
+                 --resource-group $resource_group_name \
+                 --access-tier Hot --sku Standard_LRS \
+                 --location $location
+
+echo "Creating Table in the created storage account"
+az storage table create --name $weather_data \
+                        --account-name $weather_storage_account_name 
+echo "Table Created"
+echo "End of Creating storage account script"
+```
