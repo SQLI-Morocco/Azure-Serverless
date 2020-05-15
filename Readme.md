@@ -25,12 +25,43 @@ In this demo I’m using :
 <br>
 **IoT Hub**
 IoT Hub offers two way communication, from devices to Azure (D2C) and from Azure to devices (C2D), itcan process millions of event per second and support multiple protocols such as MQTT, AMQP, MQTT over socket ,AMQP over socket   HTTPS, and file upload.
-IoT Hub secure connection between the cloud and devices by using device identity and shared access policies
+IoT Hub secure connection between the cloud and devices by using device identity and shared access policies.
 
+With the script bellow  we create IoT hub , after that we create a device within the IoT hub, a resource group is created to contain all the components for this demo.
+<br>
 ``` bash
+##Create a resource group 
+echo "Create resource group"
+az group create --name $resource_group_name  --location $location
+## install Azure clit iot extenstion 'Should be done from azure cloud shell'
+##az extension add --name azure-cli-iot-ext
+
+##Create IOT hub and add device to the IOT HUB
+echo "Create IOT Hub"
 az iot hub create --name $iot_hub_name \
                      --resource-group $resource_group_name  \
                      --location $location --sku $sku
+##Create iot device 
+echo "Create a device to connect to the IOT hub"
+az iot hub device-identity create --device-id $iot_device_name \
+                   --hub-name $iot_hub_name \
+                    --edge-enabled false \
+                    --resource-group $resource_group_name
+
+##Get device connection string 
+echo "Add IOT Hub Manage policy"
+az iot hub policy create --hub-name $iot_hub_name \
+                         --name $iot_hub_manage_policy \
+                         --permissions RegistryWrite ServiceConnect DeviceConnect \
+                         --resource-group $resource_group_name -o json
+
+echo "Connection string to be used to connect your device to the IoT hub :"
+
+az iot hub device-identity show-connection-string \
+                         --device-id $iot_device_name  \
+                         --hub-name $iot_hub_name  \
+                         --resource-group $resource_group_name -o  json \
+                         --query connectionString
 ```
 <br>
 <br>
