@@ -1,0 +1,45 @@
+{
+  "name": "",
+  "isOrdered": true,
+  "folders": {
+    "AzureFunction": {
+      "name": "AzureFunction",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "bin": {
+      "name": "bin",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "obj": {
+      "name": "obj",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "script": {
+      "name": "script",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "StreamAnalytic": {
+      "name": "StreamAnalytic",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "img": {
+      "name": "img",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    }
+  },
+  "files": {
+    "Readme": 0
+  }
+}
