@@ -17,7 +17,51 @@ In this demo I’m using :
 *  LogicAPP : Get the alert from the queue and send emails alert
 
 ![image](https://github.com/SQLI-Morocco/Azure-Serverless/blob/master/img/weatheralert.JPG)
-*NB : we are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
+*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
+        In this article I’m using Azure Cli command over linux bash shell to provision Azure components
+         I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)
+
+<br>
+<br>
+**IoT Hub**
+IoT Hub offers two way communication, from devices to Azure (D2C) and from Azure to devices (C2D), itcan process millions of event per second and support multiple protocols such as MQTT, AMQP, MQTT over socket ,AMQP over socket   HTTPS, and file upload.
+IoT Hub secure connection between the cloud and devices by using device identity and shared access policies
+
+<br>
+<br>
+```
+##Create IOT hub and add device to the IOT HUB
+echo "Create IOT Hub"
+az iot hub create --name $iot_hub_name \
+                     --resource-group $resource_group_name  \
+                     --location $location --sku $sku
+##Create iot device 
+echo "Create a device to connect to the IOT hub"
+az iot hub device-identity create --device-id $iot_device_name \
+                                  --hub-name $iot_hub_name \
+                                  --edge-enabled false \
+                                  --resource-group $resource_group_name
+
+##Get device connection string 
+echo "Add IOT Hub Manage policy"
+az iot hub policy create --hub-name $iot_hub_name \
+                         --name $iot_hub_manage_policy --permissions RegistryWrite ServiceConnect DeviceConnect \
+                         --resource-group $resource_group_name -o json
+
+echo "Connection string to be used to connect your device to the IOT hub :"
+
+az iot hub device-identity show-connection-string \
+                                                            --device-id $iot_device_name  \
+                                                            --hub-name $iot_hub_name  \
+                                                            --resource-group $resource_group_name -o  json \
+                                                            --query connectionString
+```
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
 
