@@ -27,42 +27,32 @@ In this demo I’m using :
 IoT Hub offers two way communication, from devices to Azure (D2C) and from Azure to devices (C2D), itcan process millions of event per second and support multiple protocols such as MQTT, AMQP, MQTT over socket ,AMQP over socket   HTTPS, and file upload.
 IoT Hub secure connection between the cloud and devices by using device identity and shared access policies
 
-<br>
-<br>
-``` apache
-##Create IOT hub and add device to the IOT HUB
-echo "Create IOT Hub"
-az iot hub create --name $iot_hub_name \
-                     --resource-group $resource_group_name  \
-                     --location $location --sku $sku
-##Create iot device 
-echo "Create a device to connect to the IOT hub"
-az iot hub device-identity create --device-id $iot_device_name \
-                                  --hub-name $iot_hub_name \
-                                  --edge-enabled false \
-                                  --resource-group $resource_group_name
+<span class="colour" style="color: rgb(106, 153, 85);">##Create IOT hub and add device to the IOT HUB</span>
+<span class="colour" style="color: rgb(220, 220, 170);">echo</span><span class="colour" style="color: rgb(212, 212, 212);"> </span><span class="colour" style="color: rgb(206, 145, 120);">"Create IoT Hub"</span>
+<span class="colour" style="color: rgb(212, 212, 212);">az iot hub create --name </span><span class="colour" style="color: rgb(156, 220, 254);">$iot\_hub\_name</span><span class="colour" style="color: rgb(212, 212, 212);"> \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                     --resource-group </span><span class="colour" style="color: rgb(156, 220, 254);">$resource\_group\_name</span><span class="colour" style="color: rgb(212, 212, 212);">  \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                     --location </span><span class="colour" style="color: rgb(156, 220, 254);">$location</span><span class="colour" style="color: rgb(212, 212, 212);"> --sku </span><span class="colour" style="color: rgb(156, 220, 254);">$sku</span>
+<span class="colour" style="color: rgb(156, 220, 254);"></span>
+<span class="colour" style="color: rgb(106, 153, 85);">##Create iot device </span>
+<span class="colour" style="color: rgb(220, 220, 170);">echo</span><span class="colour" style="color: rgb(212, 212, 212);"> </span><span class="colour" style="color: rgb(206, 145, 120);">"Create a device to connect to the IOT hub"</span>
+<span class="colour" style="color: rgb(212, 212, 212);">az iot hub device-identity create --device-id </span><span class="colour" style="color: rgb(156, 220, 254);">$iot\_device\_name</span><span class="colour" style="color: rgb(212, 212, 212);"> \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                                  --hub-name </span><span class="colour" style="color: rgb(156, 220, 254);">$iot\_hub\_name</span><span class="colour" style="color: rgb(212, 212, 212);"> \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                                  --edge-enabled </span><span class="colour" style="color: rgb(220, 220, 170);">false</span><span class="colour" style="color: rgb(212, 212, 212);"> \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                                  --resource-group </span><span class="colour" style="color: rgb(156, 220, 254);">$resource\_group\_name</span>
 
-##Get device connection string 
-echo "Add IOT Hub Manage policy"
-az iot hub policy create --hub-name $iot_hub_name \
-                         --name $iot_hub_manage_policy --permissions RegistryWrite ServiceConnect DeviceConnect \
-                         --resource-group $resource_group_name -o json
+<span class="colour" style="color: rgb(106, 153, 85);">##Get device connection string </span>
+<span class="colour" style="color: rgb(220, 220, 170);">echo</span><span class="colour" style="color: rgb(212, 212, 212);"> </span><span class="colour" style="color: rgb(206, 145, 120);">"Add IOT Hub Manage policy"</span>
+<span class="colour" style="color: rgb(212, 212, 212);">az iot hub policy create --hub-name </span><span class="colour" style="color: rgb(156, 220, 254);">$iot\_hub\_name</span><span class="colour" style="color: rgb(212, 212, 212);"> \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                         --name </span><span class="colour" style="color: rgb(156, 220, 254);">$iot\_hub\_manage\_policy</span><span class="colour" style="color: rgb(212, 212, 212);"> --permissions RegistryWrite ServiceConnect DeviceConnect \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                         --resource-group </span><span class="colour" style="color: rgb(156, 220, 254);">$resource\_group\_name</span><span class="colour" style="color: rgb(212, 212, 212);"> -o json</span>
 
-echo "Connection string to be used to connect your device to the IOT hub :"
+<span class="colour" style="color: rgb(220, 220, 170);">echo</span><span class="colour" style="color: rgb(212, 212, 212);"> </span><span class="colour" style="color: rgb(206, 145, 120);">"Connection string to be used to connect your device to the IOT hub :"</span>
 
-az iot hub device-identity show-connection-string \
-                                                            --device-id $iot_device_name  \
-                                                            --hub-name $iot_hub_name  \
-                                                            --resource-group $resource_group_name -o  json \
-                                                            --query connectionString
-```
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<span class="colour" style="color: rgb(212, 212, 212);">az iot hub device-identity show-connection-string \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                                                            --device-id </span><span class="colour" style="color: rgb(156, 220, 254);">$iot\_device\_name</span><span class="colour" style="color: rgb(212, 212, 212);">  \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                                                            --hub-name </span><span class="colour" style="color: rgb(156, 220, 254);">$iot\_hub\_name</span><span class="colour" style="color: rgb(212, 212, 212);">  \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                                                            --resource-group </span><span class="colour" style="color: rgb(156, 220, 254);">$resource\_group\_name</span><span class="colour" style="color: rgb(212, 212, 212);"> -o  json \</span>
+<span class="colour" style="color: rgb(212, 212, 212);">                                                            --query connectionString</span>
 
-
-#####
+<br>
+<br>
