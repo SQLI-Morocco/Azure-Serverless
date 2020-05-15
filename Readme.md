@@ -18,12 +18,13 @@ In this demo I’m using :
 
 ![image](https://github.com/SQLI-Morocco/Azure-Serverless/blob/master/img/weatheralert.JPG)
 
-*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
-        In this article I’m using Azure Cli command over linux bash shell to provision Azure components
-         I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)
+*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component<br>
+        In this article I’m using Azure Cli command over linux bash shell to provision Azure components<br>
+        I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)*
 
 <br>
 ###### **IoT Hub**
+
 <br>
 IoT Hub offers two way communication, from devices to Azure (D2C) and from Azure to devices (C2D), itcan process millions of event per second and support multiple protocols such as MQTT, AMQP, MQTT over socket ,AMQP over socket   HTTPS, and file upload.
 IoT Hub secure connection between the cloud and devices by using device identity and shared access policies.
@@ -71,11 +72,13 @@ for this demo we are using Azure simulator , please change the connection string
 The simulator start sending telemetry to the cloud ,if you check in your IoT hub metric bled you will see telemetry coming to the cloud from your device
 
 **Storage Account**
+
 Azure offers variaty type of storage  account that can be used to store all sort of data in Azure  (Blob storage, Table , Queue , File,disk)
 for this demo , we create a storage account with a table storage , this table is going to be used as cool storage to store all the data coming from the device
 with th script bellow create a storage account and a table in the created storage account.
 
 <br>
+
 ``` bash
 echo "Creating storage account"
 az storage account create \
