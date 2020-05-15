@@ -28,4 +28,10 @@ IoT Hub offers two way communication, from devices to Azure (D2C) and from Azur
 IoT Hub secure connection between the cloud and devices by using device identity and shared access policies
 
 <br>
+``` angelscript
+az iot hub create --name $iot_hub_name \
+                     --resource- group $resource_group_name  \
+                     --location $location --sku $sku
+```
+<br>
 <br>
