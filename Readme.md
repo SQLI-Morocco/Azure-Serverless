@@ -78,8 +78,8 @@ The simulator start sending telemetry to the cloud ,if you check in your IoT hub
 Azure offers variaty type of storage  account that can be used to store all sort of data in Azure  (Blob storage, Table , Queue , File,disk)
 for this demo , we create a storage account with a table storage , this table is going to be used as cool storage to store all the data coming from the device
 with th script bellow create a storage account and a table in the created storage account.
-
 <br>
+
 ``` bash
 echo "Creating storage account"
 az storage account create \
