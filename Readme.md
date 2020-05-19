@@ -79,7 +79,6 @@ Azure offers variaty type of storage  account that can be used to store all sor
 for this demo , we create a storage account with a table storage , this table is going to be used as cool storage to store all the data coming from the device
 with th script bellow create a storage account and a table in the created storage account.
 <br>
-
 ``` bash
 echo "Creating storage account"
 az storage account create \
@@ -104,7 +103,7 @@ In the next step we are going to provison an Event hub , the main rule of the ev
 Event Hub  is a m essaging service available in Azure ,  is a fully managed, real-time data ingestion service , it can stream millions of events per second from any source to build dynamic data pipelines.
 within an event hub we can create cosumer groups and it use shared access policies to allow application to read or write in the event hub
 
-In this script we create and event hub namesapce , and then in the created namesapce we add and event hub , the last two commands create two shared access keys , the first one to give write access to the Event Hub and the second one to give Read Access to the event Hy
+In this script we create and event hub namesapce , and then in the created namesapce we add and event hub , the last two commands create two shared access keys , the first one to give write access to the Event Hub and the second one to give Read Access to the event.
 <br>
 ``` bash
 az eventhubs namespace create --name $event_Hubs_namespace \
@@ -131,7 +130,14 @@ az eventhubs namespace authorization-rule create \
                             --namespace-name $event_Hubs_namespace \
                             --name $readauthorule \
                             --rights Listen
-
-
-
 ```
+<br>
+- - -
+
+<span class="colour" style="color: rgb(218, 218, 218);">**Stream Analytic job**</span>
+
+Hight scalable service to Analyze data in motion ,it supports SQL like query language for data analysis and persist data in the cold storage it Captures errors and connect services within an integration pipeline.
+To develop Stream Analytic Job, we are going to use Visual Studio Code  with Azure Stream Analytics extension to create a new project .
+
+<br>
+<br>

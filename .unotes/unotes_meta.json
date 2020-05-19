@@ -29,7 +29,14 @@
     "StreamAnalytic": {
       "name": "StreamAnalytic",
       "isOrdered": true,
-      "folders": {},
+      "folders": {
+        "weatheralertsa": {
+          "name": "weatheralertsa",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
       "files": {}
     },
     "img": {
