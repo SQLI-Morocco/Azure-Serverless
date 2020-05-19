@@ -94,8 +94,7 @@ az storage table create --name $weather_data \
 echo "Table Created"
 echo "End of Creating storage account"
 ```
-<br>
-<br>
+
 - - -
 
 **Event Hub**
