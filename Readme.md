@@ -22,6 +22,8 @@ In this demo I’m using :
         *In this article I’m using Azure Cli command over linux bash shell to provision Azure components*
         *I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)*
 
+- - -
+
 **IoT Hub**
 
 IoT Hub offers two way communication, from devices to Azure (D2C) and from Azure to devices (C2D), itcan process millions of event per second and support multiple protocols such as MQTT, AMQP, MQTT over socket ,AMQP over socket   HTTPS, and file upload.
@@ -64,10 +66,12 @@ az iot hub device-identity show-connection-string \
                          --query connectionString
 ```
 <br>
-Once the IoT Hub and the IoT hub device is created , get the connection string from the last query to configure the device.
+Once the IoT Hub and the IoT hub device are created , get the connection string from the last query to configure the device.
 for this demo we are using Azure simulator , please change the connection string in the node JS code with your connection string , and click start.
 
 The simulator start sending telemetry to the cloud ,if you check in your IoT hub metric bled you will see telemetry coming to the cloud from your device
+
+- - -
 
 **Storage Account**
 
@@ -76,7 +80,6 @@ for this demo , we create a storage account with a table storage , this table is
 with th script bellow create a storage account and a table in the created storage account.
 
 <br>
-
 ``` bash
 echo "Creating storage account"
 az storage account create \
@@ -92,9 +95,18 @@ echo "Table Created"
 echo "End of Creating storage account"
 ```
 <br>
-
 <br>
+- - -
 
+**Event Hub**
+
+In the next step we are going to provison an Event hub , the main rule of the event hub is to route data from different Azure componenent, in this demo  An Event hub is going to route alerts from Azure Job Analyics  to Azure function
+
+Event Hub  is a m essaging service available in Azure ,  is a fully managed, real-time data ingestion service , it can stream millions of events per second from any source to build dynamic data pipelines.
+within an event hub we can create cosumer groups and it use shared access policies to allow application to read or write in the event hub
+
+In this script we create and event hub namesapce , and then in the created namesapce we add and event hub , the last two commands create two shared access keys , the first one to give write access to the Event Hub and the second one to give Read Access to the event Hy
+<br>
 ``` bash
 az eventhubs namespace create --name $event_Hubs_namespace \
                               --resource-group $resource_group_name \
@@ -102,6 +114,12 @@ az eventhubs namespace create --name $event_Hubs_namespace \
                               --enable-auto-inflate true \
                               --maximum-throughput-units 20 \
                               --sku Standard
+
+## Create an event hub. Specify a name for the event hub. 
+az eventhubs eventhub create --name $event_hub_name \
+                 --resource-group $resource_group_name \
+                  --namespace-name $event_Hubs_namespace
+
 #create write and right access policies
 az eventhubs namespace authorization-rule create  \
                     --resource-group  $resource_group_name \
@@ -116,8 +134,5 @@ az eventhubs namespace authorization-rule create \
                             --rights Listen
 
 
-## Create an event hub. Specify a name for the event hub. 
-az eventhubs eventhub create --name $event_hub_name \
-                 --resource-group $resource_group_name \
-                  --namespace-name $event_Hubs_namespace
+
 ```
