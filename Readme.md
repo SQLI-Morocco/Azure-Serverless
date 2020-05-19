@@ -132,6 +132,7 @@ az eventhubs namespace authorization-rule create \
                             --rights Listen
 ```
 <br>
+<br>
 - - -
 
 <span class="colour" style="color: rgb(218, 218, 218);">**Stream Analytic job**</span>
