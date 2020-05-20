@@ -266,8 +266,8 @@ az deployment group create --resource-group $resource_group_name \
                              Output_WeatherAlertStorageTableOutput_accountKey=$storage_account_key
 ```
 <br>
-- - -
 
+- - -
 **Azure Function**
 
 Azure function is open source even driven serveless compute platefrom , we can run our code in serval languages with per use billing model and it integrates security.
@@ -289,7 +289,8 @@ We can create Azure Function using the portal , VS Code , Visual studio or any o
 In our case , we create Azure function that has Event Hub as trigger , and Storage queue as out put binding , the function will copy data coming form the event hub to a Queue storage
 
 <br>
-```
+
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -343,7 +344,8 @@ To deploy the function In azure environement we are going to use Azure Pipeline 
 when the function will be created , we are going to add parameters to connect the function with the IoT Hub and Azure storage Queue.
 
 <br>
-```
+
+```bash
 storage_account_connection_string=$(az storage account show-connection-string \
                                     --name  $weather_storage_account_name --resource-group \
                                     $resource_group_name --output tsv)
@@ -402,7 +404,8 @@ You can create a logic App directly in the portal or you can use Visual Studio 2
 
 Visual studio Create a ARM template to provision the Logic App ,you can use the script bellow to provison your Logic App
 <br>
-```
+
+```bash
 azurequeues_sharedkey=$(az storage account keys list \
                          --account-name  $weather_storage_account_name \
                          --query "[?contains(keyName, 'key1')].value" -o tsv)
@@ -418,5 +421,6 @@ az deployment group create --resource-group $resource_group_name \
                               email_to=$email_to \
                               sendgrid_apiKey=$send_grid_api_key
 ```
+
 <br>
 Now you need just to start the temperature sensor and wait 2 or 3 munite and you well get an email alert !!
