@@ -168,9 +168,9 @@ To develop Stream Analytic Job, we are going to use Visual Studio Code with Azur
    "ScriptType": "Input"
  }
 ```
-You can  test the connection and get a sample by using Preview data feature
+You can  test the connection and get a sample of data by using Preview data feature
 
-Now we add two outputs to the Stream analytic, the first one will be  table storage in the created storage account , add the second one will be the created Event Hub.
+Now we add two outputs to the Stream analytic, the first one will be table storage in the created storage account , add the second one will be the created Event Hub.
 <br>
 
 ```
