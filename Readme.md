@@ -144,29 +144,31 @@ Add a new imput file  in Inputs Folder , I call this input IoTHub.json , this f
 
 <br>
 
-``` json
-{
-    "Name": "IoTHub",
-    "Type": "Data Stream",
-    "DataSourceType": "IoT Hub",
-    "IoTHubProperties": {
-        "IotHubNamespace": "weather-alert-iot-hub",
-        "EndPoint": "messages/events",
-        "SharedAccessPolicyName": "iothubowner",
-        "SharedAccessPolicyKey": null,
-        "ConsumerGroupName": "$Default"
-    },
-    "DataSourceCredentialDomain": "c338ab22-0b90-44ae-a56a-8613b579c92e.StreamAnalystics",
-    "Serialization": {
-        "Type": "Json",
-        "Encoding": "UTF8",
-        "FieldDelimiter": null
-    },
-    "PartitionKey": null,
-    "CompressionType": "None",
-    "ScriptType": "Input"
-}
 ```
+{
+  "Name": "IoTHub",
+  "Type": "Data Stream",
+  "DataSourceType": "IoT Hub",
+  "IoTHubProperties": {
+    "IotHubNamespace": "weather-alert-iot-hub",
+    "EndPoint": "messages/events",
+    "SharedAccessPolicyName": "iothubowner",
+    "SharedAccessPolicyKey": null,
+    "ConsumerGroupName": "$Default"
+  },
+  "DataSourceCredentialDomain": "c338ab22-0b90-44ae-a56a-8613b579c92e.StreamAnalystics",
+  "Serialization": {
+   "Type": "Json",
+    "Encoding": "UTF8",
+    "FieldDelimiter": null
+   },
+   "PartitionKey": null,
+   "CompressionType": "None",
+   "ScriptType": "Input"
+ }
+```
+
+
 <br>
 
 You can  test the connection and get a sample by using Preview data feature
@@ -174,7 +176,7 @@ You can  test the connection and get a sample by using Preview data feature
 Now we add two outputs to the Stream analytic, the first one will be  table storage in the created storage account , add the second one will be the created Event Hub.
 <br>
 
-```json
+```
 {
     "Name": "TableStorage",
     "DataSourceType": "Table Storage",
@@ -193,7 +195,7 @@ Now we add two outputs to the Stream analytic, the first one will be  table stor
 }
 ```
 
-``` json
+```
 {
     "Name": "EventHub",
     "DataSourceType": "Event Hub",
