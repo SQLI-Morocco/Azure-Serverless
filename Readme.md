@@ -144,7 +144,7 @@ Add a new imput file  in Inputs Folder , I call this input IoTHub.json , this f
 
 <br>
 
-```json
+``` json
 {
     "Name": "IoTHub",
     "Type": "Data Stream",
@@ -193,7 +193,7 @@ Now we add two outputs to the Stream analytic, the first one will be  table stor
 }
 ```
 
-```json
+``` json
 {
     "Name": "EventHub",
     "DataSourceType": "Event Hub",
@@ -220,7 +220,7 @@ the last thing  that we need is to add queries to route data form the input to 
 
 <br>
 
-``` sql
+```sql
 SELECT * INTO TableStorage FROM IoTHub
 SELECT * INTO EventHub FROM IoTHub WHERE temperature > 29
 ```
@@ -266,9 +266,8 @@ az deployment group create --resource-group $resource_group_name \
                              Output_WeatherAlertEventhubOutput_sharedAccessPolicyKey=$eh_policy_send_primary_key \
                              Output_WeatherAlertStorageTableOutput_accountKey=$storage_account_key
 ```
-<br>
-- - -
 
+- - -
 **Azure Function**
 
 Azure function is open source even driven serveless compute platefrom , we can run our code in serval languages with per use billing model and it integrates security.
@@ -290,7 +289,8 @@ We can create Azure Function using the portal , VS Code , Visual studio or any o
 In our case , we create Azure function that has Event Hub as trigger , and Storage queue as out put binding , the function will copy data coming form the event hub to a Queue storage
 
 <br>
-``` c#
+
+```c#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -382,9 +382,7 @@ echo "Strat Fcuntion"
 az functionapp start --resource-group $resource_group_name --name $weatheralertfunction
 ```
 
-<br>
 - - -
-
 **Logic App**
 
 Logic Apps is a serverless workflow offering from Azure. It has all the features of serverless technologies, such as consumption-based costing and unlimited scalability.
@@ -403,7 +401,7 @@ You can create a logic App directly in the portal or you can use Visual Studio 2
 Visual studio Create a ARM template to provision the Logic App ,you can use the script bellow to provison your Logic App
 <br>
 
-```bash
+``` bash
 azurequeues_sharedkey=$(az storage account keys list \
                          --account-name  $weather_storage_account_name \
                          --query "[?contains(keyName, 'key1')].value" -o tsv)
@@ -419,5 +417,6 @@ az deployment group create --resource-group $resource_group_name \
                               email_to=$email_to \
                               sendgrid_apiKey=$send_grid_api_key
 ```
+
 <br>
 Now you need just to start the temperature sensor and wait 2 or 3 munite and you well get an email alert !!
