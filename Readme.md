@@ -20,8 +20,8 @@ In this demo I’m using :
 
 ![image](https://github.com/SQLI-Morocco/Azure-Serverless/blob/master/img/weatheralert.JPG)
 
-*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
-        *In this article I’m using Azure Cli command with linux bash shell to provision Azure components*
+*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*<br>
+        *In this article I’m using Azure Cli command with linux bash shell to provision Azure components*<br>
         *I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)*
 
 - - -
@@ -107,6 +107,7 @@ Event Hub is a messaging service available in Azure ,it is a fully managed, real
 In this script we create event hub namespace , and then in the created namespace we add an event hub , the last two commands create two shared access keys , the first one to give write access to the Event Hub and the second one to give Read Access to the event.
 
 <br>
+
 ``` bash
 az eventhubs namespace create --name $event_Hubs_namespace \
                               --resource-group $resource_group_name \
@@ -226,6 +227,7 @@ You can test locally you job using local input data by using Run Locally feature
 To deploy the job analytics , we use Azure Cli to deploy the generated ARM template.
 
 <br>
+
 ``` bash
 iot_hub_manage_policy_sas=$(az iot hub policy list --hub-name $iot_hub_name \
                                 --resource-group $resource_group_name \
@@ -284,7 +286,9 @@ We can create Azure Function using the portal, VS Code, Visual studio or any oth
 In our case, we create Azure function that has Event Hub as trigger, and Storage queue as output binding, the function will copy the data coming from the event hub to a Queue storage
 
 <br>
-``` c#
+
+```c#
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
