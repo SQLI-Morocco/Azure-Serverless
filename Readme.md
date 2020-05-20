@@ -214,8 +214,9 @@ Now we need to add two outputs to my Stream analytic, the first one will table s
 ```
 <br>
 the last thing  that we need is to add queries to route data form the input to the outputs  in *.asaql file
+
 <br>
-<br>
+
 ```sql
 SELECT * INTO TableStorage FROM IoTHub
 SELECT * INTO EventHub FROM IoTHub WHERE temperature > 29
