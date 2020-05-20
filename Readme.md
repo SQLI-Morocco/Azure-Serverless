@@ -166,7 +166,6 @@ Add a new imput file  in Inputs Folder , I call this input IoTHub.json , this f
 }
 ```
 <br>
-<br>
 You can  test the connection and get a sample of data by using Preview data feature
 
 Now we need to add two outputs to my Stream analytic, the first one will table storage in the created storage account , add the second one will be the created Event Hub.
@@ -214,10 +213,9 @@ Now we need to add two outputs to my Stream analytic, the first one will table s
 }
 ```
 <br>
-the last thing  that we need is to add queries to route data form the input to the outputs  in \*asaql file
-
+the last thing  that we need is to add queries to route data form the input to the outputs  in *.asaql file
 <br>
-
+<br>
 ```sql
 SELECT * INTO TableStorage FROM IoTHub
 SELECT * INTO EventHub FROM IoTHub WHERE temperature > 29
@@ -265,7 +263,6 @@ az deployment group create --resource-group $resource_group_name \
                              Output_WeatherAlertEventhubOutput_sharedAccessPolicyKey=$eh_policy_send_primary_key \
                              Output_WeatherAlertStorageTableOutput_accountKey=$storage_account_key
 ```
-<br>
 
 - - -
 **Azure Function**
@@ -382,7 +379,6 @@ az functionapp config appsettings set \
 echo "Strat Fcuntion"
 az functionapp start --resource-group $resource_group_name --name $weatheralertfunction 
 ```
-<br>
 
 - - -
 **Logic App**
