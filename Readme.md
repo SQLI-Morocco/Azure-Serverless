@@ -383,7 +383,6 @@ echo "Strat Fcuntion"
 az functionapp start --resource-group $resource_group_name --name $weatheralertfunction 
 ```
 <br>
-<br>
 
 - - -
 **Logic App**
