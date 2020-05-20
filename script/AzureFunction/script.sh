@@ -22,8 +22,8 @@ az functionapp create --resource-group $resource_group_name \
                          --runtime dotnet   \
                          --functions-version 3   \
                          --consumption-plan-location $location \
-                         --deployment-source-url \
-                         $gitrepo --deployment-source-branch master
+                         --deployment-source-url $gitrepo \
+                         --deployment-source-branch master
 echo "Setup function settings"
 
 az functionapp config appsettings set \
