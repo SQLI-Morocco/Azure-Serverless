@@ -417,4 +417,4 @@ az deployment group create --resource-group $resource_group_name \
                               sendgrid_apiKey=$send_grid_api_key
 ```
 <br>
-Now you need just to start the temperature sensor and wait 2 or 3 minute and you well get an email alert !!
+Now you need just to start the temperature sensor and wait 2 or 3 minutes and you well get an email alert !!
