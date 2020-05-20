@@ -5,7 +5,7 @@ Serverless computing is the abstraction of servers, infrastructure, and operati
 Serverless is consumption-based, which means that you don't need to anticipate any capacity, this different from using PaaS services, you still pay for the reserved compute.
 
 **Weather Alert Scenario**
-In this example  I'm going to build weather alert system ,using a bunch of Azure Serverless component , the idea is to connect Azure environment to the IoT device , this device is going to send data to the cloud , and within the cloud environment I’m going to use Servless component  to manage, store and route data , at the end the system is going to send email alert when the temperature is greater than a given thresholder
+In this example  I'm going to build weather alert system ,using a bunch of Azure Serverless component , the idea is to connect Azure environment to the IoT device , this device is going to send data to the cloud , and within the cloud environment I’m going to use Serverless components  to manage, store and route data , at the end the system is going to send email alert when the temperature is greater than a given thresholder
 
 In this demo I’m using :
 
@@ -71,15 +71,15 @@ az iot hub device-identity show-connection-string \
 Once the IoT Hub and the IoT hub device are created , get the connection string from the last query to configure the device.
 for this demo we are using Azure simulator , please change the connection string in the node JS code with your connection string , and click start.
 
-The simulator start sending telemetry to the cloud ,if you check in your IoT hub metric blad you will see telemetry coming to the cloud from your device
+The simulator start sending telemetry to the cloud ,if you check in your IoT Hub metric blade you will see telemetry coming to the cloud from your device
 
 - - -
 
 **Storage Account**
 
-Azure offers variaty type of storage  account that can be used to store all sort of data in Azure  (Blob storage, Table , Queue , File,disk)
+Azure offers variety  type of storage  account that can be used to store all sort of data in Azure  (Blob storage, Table , Queue , File,disk)
 for this demo , we create a storage account with a table storage , this table is going to be used as cool storage to store all the data coming from the device
-with th script bellow  we create a storage account and a table in the created storage account.
+with the script bellow  we create a storage account and a table in the created storage account.
 <br>
 ``` bash
 echo "Creating storage account"
@@ -100,12 +100,12 @@ echo "End of Creating storage account"
 
 **Event Hub**
 
-In the next step we are going to provison an Event hub , the main rule of the event hub is to route data from different Azure componenent, in this demo  An Event hub is going to route alerts from Azure Job Analyics  to Azure function
+In the next step we are going to provision an Event hub , the main rule of the event hub is to route data from different Azure component, in this demo  An Event hub is going to route alerts from Azure Job Analytics  to Azure function.
 
-Event Hub  is a messaging service available in Azure ,it is a fully managed, real-time data ingestion service , it can stream millions of events per second from any source to build dynamic data pipelines.
-within an event hub we can create cosumer groups and it uses shared access policies to allow application to read or write in the event hub
+Event Hub  is a messaging service available in Azure ,it is a fully managed, real-time data ingestion service , it can stream millions of events per second from any source to build dynamic data pipelines. within an event hub we can create consumer groups and it uses shared access policies to allow application to read or write in the event hub.
 
-In this script we create  event hub namesapce , and then in the created namesapce we add an event hub , the last two commands create two shared access keys , the first one to give write access to the Event Hub and the second one to give Read Access to the event.
+In this script we create event hub namespace , and then in the created namespace we add an event hub , the last two commands create two shared access keys , the first one to give write access to the Event Hub and the second one to give Read Access to the event.
+
 <br>
 ``` bash
 az eventhubs namespace create --name $event_Hubs_namespace \
@@ -138,9 +138,9 @@ az eventhubs namespace authorization-rule create \
 
 **Stream Analytic job**
 
-Azure stream analytics is  hight scalable service to Analyze data in motion ,it supports SQL like query language for data analysis and persist data in the cold storage it captures errors and connects services within an integration pipeline.
-To develop Stream Analytic Job, we are going to use Visual Studio Code  with Azure Stream Analytics extension to create a new project .
-Add a new imput file  in Inputs Folder , I call this input IoTHub.json , this file contains all the parameters to connect to the IotHub and process data in real time.
+Azure stream analytics is high scalable service to Analyze data in motion, it supports SQL like query language for data analysis and persist data in the cold storage it captures errors and connects services within an integration pipeline. 
+
+To develop Stream Analytic Job, we are going to use Visual Studio Code with Azure Stream Analytics extension to create a new project. Add a new input file in Inputs Folder, I call this input IoTHub.json , this file contains all the parameters to connect to the IotIHub and process data in real time.
 
 <br>
 
@@ -167,10 +167,6 @@ Add a new imput file  in Inputs Folder , I call this input IoTHub.json , this f
    "ScriptType": "Input"
  }
 ```
-
-
-<br>
-
 You can  test the connection and get a sample by using Preview data feature
 
 Now we add two outputs to the Stream analytic, the first one will be  table storage in the created storage account , add the second one will be the created Event Hub.
@@ -220,8 +216,6 @@ Now we add two outputs to the Stream analytic, the first one will be  table stor
 <br>
 the last thing  that we need is to add queries to route data form the input to the outputs  in *.asaql file
 
-<br>
-
 ```sql
 SELECT * INTO TableStorage FROM IoTHub
 SELECT * INTO EventHub FROM IoTHub WHERE temperature > 29
@@ -229,9 +223,9 @@ SELECT * INTO EventHub FROM IoTHub WHERE temperature > 29
 <br>
 The first query store all the data coming from the device to the storage table as cool storage, the second query route data when temperature field has a value greater than 29.
 
-You can test locally you job using local input data by using Run Locally feature, and compile the scrpit using compile feature to generate the ARM template.
+You can test locally you job using local input data by using Run Locally feature, and compile the script using compile feature to generate the ARM template.
 
-to deploy the job analytics , we use Azure Cli to deploy the generated ARM template.
+To deploy the job analytics , we use Azure Cli to deploy the generated ARM template.
 
 <br>
 
@@ -273,8 +267,9 @@ az deployment group create --resource-group $resource_group_name \
 - - -
 **Azure Function**
 
-Azure function is open source even driven serveless compute platefrom , we can run our code in serval languages with per use billing model and it integrates security.
-As an even direven componenent , Azure Function  supports by defaul serval triggrers
+Azure function is open source even driven serverless compute platform , we can run our code in serval languages with per use billing model and it integrates security. 
+As an even driven component , Azure Function  supports by default serval triggers
+
 <br>
 * Azure based on scenarios common
     * HTTP request
@@ -288,8 +283,8 @@ As an even direven componenent , Azure Function  supports by defaul serval trig
     * GitHub
     * Twilio (SMS Messages)
 
-We can create Azure Function using the portal , VS Code , Visual studio or any other IDE.
-In our case , we create Azure function that has Event Hub as trigger , and Storage queue as out put binding , the function will copy data coming form the event hub to a Queue storage
+We can create Azure Function using the portal, VS Code, Visual studio or any other IDE.
+In our case, we create Azure function that has Event Hub as trigger, and Storage queue as output binding, the function will copy the data coming from the event hub to a Queue storage
 
 <br>
 
@@ -345,8 +340,8 @@ namespace weatherAlertFunction
 
 ```
 <br>
-To deploy the function In azure environement we are going to use Azure Pipeline , first we need to push the function in to  git repo, than to povison Azure function compute in Azure and link the Azure function with the git repo.
-when the function will be created , we are going to add parameters to connect the function with the Event Hub and Azure storage Queue.
+To deploy the function In azure environment we are going to use Azure Pipeline , first we need to push the function in to git repo, than to provision Azure function compute in Azure and link the Azure function with the git repo.
+when the function will be created, we are going to add parameters to connect the function with the Event Hub and Azure storage Queue.
 
 <br>
 
@@ -394,17 +389,17 @@ az functionapp start --resource-group $resource_group_name --name $weather
 Logic Apps is a serverless workflow offering from Azure. It has all the features of serverless technologies, such as consumption-based costing and unlimited scalability.
 Logic Apps helps us to build a workflow solution with ease using the Azure portal. Itprovides a drag and drop UI to create and configure the workflow.
 
-I our case , we are going to create a logic App with three activities :
+I our case, we are going to create a logic App with three activities:
+1. Storage Account Activity: Get data from the queue
+2. Send Grid Activity : Send alert emails containing the data coming from the first activity
+3. Storage Account Activity:  Delete message form the queue
 
-1. Storage Account Activity : Get data from the queue
-2. Send Grid Ativity  : Send alert emails containing the data coming form the first activity
-3. Storage Account Acitivity :  Delete message form the queue
 
 You can create a logic App directly in the portal or you can use Visual Studio 2019 or VS Code , in my case I'm using Visual studio 2019 with the designer plugin , to create my Logic App.
 
 ![image](/img/logicapp.jpg)
 
-Visual studio Create a ARM template to provision the Logic App ,you can use the script bellow to provison your Logic App
+Visual studio Create an ARM template to provision the Logic App ,you can use the script bellow to provision your Logic App
 <br>
 
 ``` bash
@@ -425,4 +420,4 @@ az deployment group create --resource-group $resource_group_name \
 ```
 
 <br>
-Now you need just to start the temperature sensor and wait 2 or 3 munite and you well get an email alert !!
+Now you need just to start the temperature sensor and wait 2 or 3 minute and you well get an email alert !!
