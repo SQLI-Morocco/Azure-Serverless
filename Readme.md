@@ -142,7 +142,7 @@ Add a new imput file  in Inputs Folder , I call this input IoTHub.json , this f
 
 <br>
 
-```json
+``` json
 {
     "Name": "IoTHub",
     "Type": "Data Stream",
@@ -172,7 +172,7 @@ You can  test the connection and get a sample of data by using Preview data fea
 Now we need to add two outputs to my Stream analytic, the first one will table storage in the created storage account , add the second one will be the created Event Hub.
 <br>
 
-```json
+``` json
 {
     "Name": "TableStorage",
     "DataSourceType": "Table Storage",
@@ -191,7 +191,7 @@ Now we need to add two outputs to my Stream analytic, the first one will table s
 }
 ```
 
-```json
+``` json
 {
     "Name": "EventHub",
     "DataSourceType": "Event Hub",
@@ -231,7 +231,7 @@ to deploy the job analytics , we use Azure Cli to deploy the generated ARM templ
 
 <br>
 
-```bash
+``` bash
 iot_hub_manage_policy_sas=$(az iot hub policy list --hub-name $iot_hub_name \
                                 --resource-group $resource_group_name \
                                 --query "[?contains(keyName, 'manage')].primaryKey" -o tsv)
@@ -342,10 +342,10 @@ namespace weatherAlertFunction
 <br>
 To deploy the function In azure environement we are going to use Azure Pipeline , first we need to push the function to a git repo, than to povison Azure function compute in Azure and link the Azure function with the git repo.
 when the function will be created , we are going to add parameters to connect the function with the IoT Hub and Azure storage Queue.
-
+<br>
 <br>
 
-```bash
+``` bash
 storage_account_connection_string=$(az storage account show-connection-string \
                                     --name  $weather_storage_account_name --resource-group \
                                     $resource_group_name --output tsv)
@@ -384,8 +384,8 @@ az functionapp start --resource-group $resource_group_name --name $weather
 ```
 <br>
 <br>
-- - -
 
+- - -
 **Logic App**
 
 Logic Apps is the serverless workflow offering from Azure. It has all the features of serverless technologies, such as consumption-based costing and unlimited scalability.
@@ -405,7 +405,7 @@ You can create a logic App directly in the portal or you can use Visual Studio 2
 Visual studio Create a ARM template to provision the Logic App ,you can use the script bellow to provison your Logic App
 <br>
 
-```bash
+``` bash
 azurequeues_sharedkey=$(az storage account keys list \
                          --account-name  $weather_storage_account_name \
                          --query "[?contains(keyName, 'key1')].value" -o tsv)
