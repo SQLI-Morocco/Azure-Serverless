@@ -144,6 +144,7 @@ Azure stream analytics is high scalable service to Analyze data in motion, it su
 To develop Stream Analytic Job, we are going to use Visual Studio Code with Azure Stream Analytics extension to create a new project. Add a new input file in Inputs Folder, I call this input IoTHub.json , this file contains all the parameters to connect to the IotIHub and process data in real time.
 
 <br>
+
 ```
 {
   "Name": "IoTHub",
@@ -342,6 +343,7 @@ To deploy the function In azure environment we are going to use Azure Pipeline ,
 when the function will be created, we are going to add parameters to connect the function with the Event Hub and Azure storage Queue.
 
 <br>
+
 ``` bash
 storage_account_connection_string=$(az storage account show-connection-string \
                                     --name  $weather_storage_account_name --resource-group \
