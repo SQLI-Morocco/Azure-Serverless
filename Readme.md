@@ -17,9 +17,9 @@ In this demo I’m using :
 * LogicAPP : Get the alert from the queue and send emails alert
 
 ![image](https://github.com/SQLI-Morocco/Azure-Serverless/blob/master/img/weatheralert.JPG)
-
-*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component*
-        *In this article I’m using Azure Cli command over linux bash shell to provision Azure components*
+<br>
+*NB : We are not oblige to use all of this component to our scenario , the idea is just to present the maximum of azure  serverless component* <br>
+        *In this article I’m using Azure Cli command over linux bash shell to provision Azure components*<br>
         *I'm using Raspberry PI simulator, to simulate an IoT device   [https://azure-samples.github.io/raspberry-pi-web-simulator/](https://azure-samples.github.io/raspberry-pi-web-simulator/)*
 
 - - -
@@ -131,11 +131,10 @@ az eventhubs namespace authorization-rule create \
                             --name $readauthorule \
                             --rights Listen
 ```
-<br>
-<br>
+
 - - -
 
-<span class="colour" style="color: rgb(218, 218, 218);">**Stream Analytic job**</span>
+**Stream Analytic job**
 
 Hight scalable service to Analyze data in motion ,it supports SQL like query language for data analysis and persist data in the cold storage it Captures errors and connects services within an integration pipeline.
 To develop Stream Analytic Job, we are going to use Visual Studio Code  with Azure Stream Analytics extension to create a new project .
