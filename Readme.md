@@ -399,6 +399,7 @@ You can create a logic App directly in the portal or you can use Visual Studio 2
 
 Visual studio Create an ARM template to provision the Logic App ,you can use the script bellow to provision your Logic App
 <br>
+
 ``` bash
 azurequeues_sharedkey=$(az storage account keys list \
                          --account-name  $weather_storage_account_name \
