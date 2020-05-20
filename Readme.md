@@ -290,6 +290,7 @@ We can create Azure Function using the portal , VS Code , Visual studio or any o
 In our case , we create Azure function that has Event Hub as trigger , and Storage queue as out put binding , the function will copy data coming form the event hub to a Queue storage
 
 <br>
+
 ```c#
 
 using System;
