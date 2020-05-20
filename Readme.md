@@ -398,8 +398,6 @@ I our case, we are going to create a logic App with three activities:
 
 You can create a logic App directly in the portal or you can use Visual Studio 2019 or VS Code , in my case I'm using Visual studio 2019 with the designer plugin , to create my Logic App.
 
-![image](/img/logicapp.jpg)
-
 Visual studio Create an ARM template to provision the Logic App ,you can use the script bellow to provision your Logic App
 <br>
 
