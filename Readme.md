@@ -232,6 +232,7 @@ You can test locally you job using local input data by using Run Locally feature
 to deploy the job analytics , we use Azure Cli to deploy the generated ARM template.
 
 <br>
+
 ``` bash
 iot_hub_manage_policy_sas=$(az iot hub policy list --hub-name $iot_hub_name \
                                 --resource-group $resource_group_name \
@@ -289,8 +290,8 @@ We can create Azure Function using the portal , VS Code , Visual studio or any o
 In our case , we create Azure function that has Event Hub as trigger , and Storage queue as out put binding , the function will copy data coming form the event hub to a Queue storage
 
 <br>
-
 ```c#
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -338,12 +339,14 @@ namespace weatherAlertFunction
         }
     }
 }
+
 ```
 <br>
 To deploy the function In azure environement we are going to use Azure Pipeline , first we need to push the function in to  git repo, than to povison Azure function compute in Azure and link the Azure function with the git repo.
 when the function will be created , we are going to add parameters to connect the function with the Event Hub and Azure storage Queue.
 
 <br>
+
 ```bash
 storage_account_connection_string=$(az storage account show-connection-string \
                                     --name  $weather_storage_account_name --resource-group \
