@@ -107,6 +107,7 @@ Event Hub  is a messaging service available in Azure ,it is a fully managed, rea
 In this script we create event hub namespace , and then in the created namespace we add an event hub , the last two commands create two shared access keys , the first one to give write access to the Event Hub and the second one to give Read Access to the event.
 
 <br>
+
 ``` bash
 az eventhubs namespace create --name $event_Hubs_namespace \
                               --resource-group $resource_group_name \
