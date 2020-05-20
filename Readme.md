@@ -141,7 +141,8 @@ To develop Stream Analytic Job, we are going to use Visual Studio Code  with A
 Add a new imput file  in Inputs Folder , I call this input IoTHub.json , this file contains all the parameters to connect to the IotHub and process data in real time.
 
 <br>
-```
+
+```json
 {
     "Name": "IoTHub",
     "Type": "Data Stream",
@@ -166,11 +167,12 @@ Add a new imput file  in Inputs Folder , I call this input IoTHub.json , this f
 ```
 <br>
 <br>
-You can  test the connection and get a sample by using Preview data feature
+You can  test the connection and get a sample of data by using Preview data feature
 
-Now we add two outputs to my Stream analytic, the first one will table storage in the created storage account , add the second one will be the created Event Hub.
+Now we need to add two outputs to my Stream analytic, the first one will table storage in the created storage account , add the second one will be the created Event Hub.
 <br>
-```
+
+```json
 {
     "Name": "TableStorage",
     "DataSourceType": "Table Storage",
@@ -189,7 +191,7 @@ Now we add two outputs to my Stream analytic, the first one will table storage i
 }
 ```
 
-```
+```json
 {
     "Name": "EventHub",
     "DataSourceType": "Event Hub",
@@ -215,7 +217,8 @@ Now we add two outputs to my Stream analytic, the first one will table storage i
 the last thing  that we need is to add queries to route data form the input to the outputs  in \*asaql file
 
 <br>
-```
+
+```sql
 SELECT * INTO TableStorage FROM IoTHub
 SELECT * INTO EventHub FROM IoTHub WHERE temperature > 29
 ```
@@ -227,7 +230,8 @@ You can test locally you job using local input data by using Run Locally feature
 to deploy the job analytics , we use Azure Cli to deploy the generated ARM template.
 
 <br>
-```
+
+```bash
 iot_hub_manage_policy_sas=$(az iot hub policy list --hub-name $iot_hub_name \
                                 --resource-group $resource_group_name \
                                 --query "[?contains(keyName, 'manage')].primaryKey" -o tsv)
