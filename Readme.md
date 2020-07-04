@@ -389,7 +389,7 @@ az functionapp start --resource-group $resource_group_name --name $weather
 Logic Apps is a serverless workflow offering from Azure. It has all the features of serverless technologies, such as consumption-based costing and unlimited scalability.
 Logic Apps helps us to build a workflow solution with ease using the Azure portal. Itprovides a drag and drop UI to create and configure the workflow.
 
-I our case, we are going to create a logic App with three activities:
+In our case, we are going to create a logic App with three activities:
 
 1. Storage Account Activity: Get data from the queue
 2. Send Grid Activity : Send alert emails containing the data coming from the first activity
